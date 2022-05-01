@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -62,7 +64,7 @@ public class Job implements Serializable {
     /**
      * 工作年限
      */
-    private Integer workingYears;
+    private String workingYears;
 
     /**
      * 发布时间

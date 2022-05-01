@@ -31,7 +31,7 @@ public class SwaggerConfig{
                 .apiInfo(apiInfo())
                 .select()
                 //为当前包路径
-                .apis(RequestHandlerSelectors.basePackage("com.*"))
+                .apis(RequestHandlerSelectors.basePackage("com.gaop.appjob"))
                 .paths(PathSelectors.any())
                 .build();
     }

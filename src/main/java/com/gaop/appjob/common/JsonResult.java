@@ -14,8 +14,8 @@ import java.io.Serializable;
 public class JsonResult<T> implements Serializable {
 
     private Boolean success;
-    private Integer errorCode;
-    private String errorMsg;
+    private Integer code;
+    private String msg;
     private T data;
 
     public JsonResult() {
@@ -26,8 +26,8 @@ public class JsonResult<T> implements Serializable {
      */
     public JsonResult(boolean success) {
         this.success = success;
-        this.errorMsg = success ? ResultCode.SUCCESS.getMessage() : ResultCode.COMMON_FAIL.getMessage();
-        this.errorCode = success ? ResultCode.SUCCESS.getCode() : ResultCode.COMMON_FAIL.getCode();
+        this.msg = success ? ResultCode.SUCCESS.getMessage() : ResultCode.COMMON_FAIL.getMessage();
+        this.code = success ? ResultCode.SUCCESS.getCode() : ResultCode.COMMON_FAIL.getCode();
     }
 
     /**
@@ -36,8 +36,8 @@ public class JsonResult<T> implements Serializable {
     public JsonResult(boolean success, ResultCode resultEnum) {
         this.success = success;
         // 传来的枚举为null就用默认的，不为null就用传来的枚举
-        this.errorCode = success ? (resultEnum==null?ResultCode.SUCCESS.getCode():resultEnum.getCode()) : (resultEnum == null ? ResultCode.COMMON_FAIL.getCode() : resultEnum.getCode());
-        this.errorMsg = success ? (resultEnum==null?ResultCode.SUCCESS.getMessage():resultEnum.getMessage()): (resultEnum == null ? ResultCode.COMMON_FAIL.getMessage() : resultEnum.getMessage());
+        this.code = success ? (resultEnum==null?ResultCode.SUCCESS.getCode():resultEnum.getCode()) : (resultEnum == null ? ResultCode.COMMON_FAIL.getCode() : resultEnum.getCode());
+        this.msg = success ? (resultEnum==null?ResultCode.SUCCESS.getMessage():resultEnum.getMessage()): (resultEnum == null ? ResultCode.COMMON_FAIL.getMessage() : resultEnum.getMessage());
     }
 
     /**
@@ -46,8 +46,8 @@ public class JsonResult<T> implements Serializable {
      */
     public JsonResult(boolean success, T data) {
         this.success = success;
-        this.errorCode = success ? ResultCode.SUCCESS.getCode() : ResultCode.COMMON_FAIL.getCode();
-        this.errorMsg = success ? ResultCode.SUCCESS.getMessage() : ResultCode.COMMON_FAIL.getMessage();
+        this.code = success ? ResultCode.SUCCESS.getCode() : ResultCode.COMMON_FAIL.getCode();
+        this.msg = success ? ResultCode.SUCCESS.getMessage() : ResultCode.COMMON_FAIL.getMessage();
         this.data = data;
     }
 
@@ -59,8 +59,8 @@ public class JsonResult<T> implements Serializable {
      */
     public JsonResult(boolean success, ResultCode resultEnum, T data) {
         this.success = success;
-        this.errorCode = success ? (resultEnum==null ? ResultCode.SUCCESS.getCode() : resultEnum.getCode()): (resultEnum == null ? ResultCode.COMMON_FAIL.getCode() : resultEnum.getCode());
-        this.errorMsg = success ? (resultEnum==null ? ResultCode.SUCCESS.getMessage() : resultEnum.getMessage()) : (resultEnum == null ? ResultCode.COMMON_FAIL.getMessage() : resultEnum.getMessage());
+        this.code = success ? (resultEnum==null ? ResultCode.SUCCESS.getCode() : resultEnum.getCode()): (resultEnum == null ? ResultCode.COMMON_FAIL.getCode() : resultEnum.getCode());
+        this.msg = success ? (resultEnum==null ? ResultCode.SUCCESS.getMessage() : resultEnum.getMessage()) : (resultEnum == null ? ResultCode.COMMON_FAIL.getMessage() : resultEnum.getMessage());
         this.data = data;
     }
 
